@@ -24,15 +24,25 @@ operations = {
     "*": multiply,
     "/": div
 }
+def calculator():
 
-num_1 = int(input("What's the first number: "))
-num_2 = int(input("What's the second number: "))
+    num_1 = int(input("What's the first number: "))
+    for symbol in operations:
+        print(symbol)
+    should_continue = True
 
-for calc in operations:
-    print(calc)
+    while should_continue:
+        operation_symbol = input("Pick an operation: ")
+        num_2 = int(input("What's the second number: "))
+        calc_func = operations[operation_symbol]
+        result = calc_func(num_1, num_2)
 
-symbol = input("Select from the above operations: ")
-func = operations[symbol]
-result = func(num_1, num_2)
+        print(f"{num_1} {operation_symbol} {num_2} = {result}")
 
-print(f"{num_1} {symbol} {num_2} = {result}")
+        if input(f"Type 'y' to continue with {result}, or type 'n' to start a new caculation: ") == "y":
+            num_1 = result
+        else:
+            should_continue = False
+            calculator()
+
+calculator()    
