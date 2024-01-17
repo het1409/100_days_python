@@ -33,15 +33,8 @@
 
 #Hint 4: Create a deal_card() function that uses the List below to *return* a random card.
 #11 is the Ace.
-import random
-
-def deal_card():
-    cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
-    return random.choice(cards)
-
-
-
 #Hint 5: Deal the user and computer 2 cards each using deal_card() and append().
+
 #user_cards = []
 #computer_cards = []
 
@@ -50,10 +43,12 @@ def deal_card():
 #Look up the sum() function to help you do this.
 import random
 
+#Choose random cards from the list
 def deal_card():
     cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
     return random.choice(cards)
 
+#calculate user's and computer's score
 def calculate_score(cards):
     if sum(cards) == 21 and len(cards) == 2:
         return 0
@@ -62,22 +57,24 @@ def calculate_score(cards):
         cards.append(1)
     return sum(cards)
 
+#Comparing the scores to achieve the final output
 def compare(user_score, computer_score):
     if user_score == computer_score:
-        print("DRAW")
+        return ("DRAW")
     elif computer_score == 0:
-        print("Computer wins!")
+        return ("Computer wins!")
     elif user_score == 0:
-        print("You Won!")
+        return ("You Won!")
     elif user_score > 21:
-        print("You lose!")
+        return ("You lose!")
     elif computer_score > 21:
-        print("You won!")
+        return ("You won!")
     elif user_score > computer_score:
-        print("You won!")
+        return ("You won!")
     else:
-        print("You lose!")
+        return ("You lose!")
 
+#Creating empty list. using for loop and while loop to calculate scores.
 def blackjack():
     user_cards = []
     computer_cards = []
